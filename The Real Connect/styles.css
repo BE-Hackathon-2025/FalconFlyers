@@ -1,11 +1,11 @@
 :root {
-  --mint: #a9f5cd;
-  --sky: #6fdaf7;
-  --coral: #ff8b8b;
-  --yellow: #fff6a1;
-  --white: #fff;
-  --gray: #eef2f6;
-  --shadow: 0 4px 16px rgba(33,80,61,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --mint: hsl(64, 100%, 45%);
+  --sky: #00106b;
+  --coral: #ffffff;
+  --yellow: #ffffff;
+  --white: #06135a;
+  --gray: #ffffff;
+  --shadow: 0 4px 16px rgba(33,80,61,0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
   --radius: 1.4em;
   --nav-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
@@ -19,7 +19,7 @@ body {
   font-family: 'Nunito', Arial, sans-serif;
   margin: 0;
   background: linear-gradient(135deg, var(--mint) 0%, var(--sky) 100%);
-  color: #24413b;
+  color: #000000;
   min-height: 100vh;
 }
 
@@ -40,7 +40,7 @@ body {
   font-size: 2em;
   color: var(--coral);
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 12px #f4d4, 0 1px 0 #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.267), 0 1px 0 #fff;
 }
 .navbar-links {
   list-style: none;
@@ -50,7 +50,7 @@ body {
   padding: 0;
 }
 .navbar-links li a {
-  color: #24413b;
+  color: #fff;
   text-decoration: none;
   font-size: 1.1em;
   font-weight: 600;
@@ -148,7 +148,7 @@ body {
   font-size: 1.22em;
 }
 .resource-card p {
-  color: #374a46;
+  color: #ffffff;
   font-size: 1.08em;
 }
 
@@ -157,7 +157,7 @@ body {
   text-align: center;
   padding: 1.5em 0;
   background: var(--sky);
-  color: #344;
+  color: rgb(0, 0, 0);
   font-size: 1em;
   border-radius: var(--radius) var(--radius) 0 0;
   margin-top: 2em;
@@ -165,8 +165,9 @@ body {
 
 /* Chatbot Bubble and Widget */
 .chatbot-bubble {
-  position: fixed;
-  bottom: 2em;
+  position:absolute ;
+  top:200px;
+  /* bottom: 2em; */
   right: 2em;
   background: var(--sky);
   color: var(--white);
@@ -178,7 +179,7 @@ body {
   border-radius: 50%;
   box-shadow: var(--shadow);
   cursor: pointer;
-  font-size: 2em;
+  font-size: 5em;
   z-index: 100;
   transition: background 0.18s;
 }
