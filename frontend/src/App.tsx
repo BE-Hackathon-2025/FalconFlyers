@@ -22,9 +22,14 @@ export default function App() {
         <div className="hero-content">
           <h1>Welcome to The Real Connect!</h1>
           <p>Your bright path to wellness, essentials, and community support.</p>
-          <button className="find-help-btn">
-            Find Help
-          </button>
+          <form>
+            <input type="text" name="helpfield" placeholder="What do you need help with?" style= {{
+              background: "white",
+              color: "black",
+              width: "100%",
+              height: "10rem", 
+            }}></input>
+            </form>
         </div>
         <div className="hero-graphic" aria-hidden="true" />
       </header>
