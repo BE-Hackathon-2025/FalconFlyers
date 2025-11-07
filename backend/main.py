@@ -1,5 +1,6 @@
 import fastapi
 
+from pydantic import BaseModel
 from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -15,6 +16,18 @@ backend.add_middleware(
     allow_methods = ["POST", "GET",], 
     allow_headers = ["*"]
 )
+
+class UserModel(BaseModel):
+    id: int
+    username: str
+    password: str
+
+
+class MessageBase(BaseModel):
+    message: str
+    user: UserModel | str 
+
+
 
 @backend.get("/")
 def root():
@@ -38,5 +51,12 @@ def sendMessage():
 
 @backend.get("/api/community/wall")
 def get_message():
-    return {"Wall": {"Brick": "Cement"}}
+    pass
 
+@backend.post("/api/community/signup")
+def signUp():
+    pass
+
+@backend.post("/api/community/login")
+def login():
+    pass
