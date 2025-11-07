@@ -8,7 +8,9 @@ _______________
 # Project Name
 
 ## Challenge Statement(s) Addressed 🎯
-**...include the challenge statement(s) the project worked to address**
+### Real World Solutions for Today's Communities
+Developing a cutting-edge software application that harnesses the power of artiicial intelligence to solve a significant challenge or enhance the quality of life in your local community. 
+
 
 Examples:
 * How might we decrease the United States chances of alien and monster attacks given what we know from popular alien and monster movies?
@@ -31,7 +33,7 @@ Example:
 * ReactJS
 
 ### Link to Demo Presentation 📽
-**...point us to your PPT or Canva slides 😍**
+[Canva](https://www.canva.com/design/DAG4BsQXPII/nbCLyoegkphp4-dw-x0LTg/view?utm_content=DAG4BsQXPII&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8b0ff2427f)
 
 ### Team Checklist ✅
 - [ ] Team photo
@@ -45,13 +47,13 @@ Example:
 - [ ] Code merged to main branch
 
 ### School Name 🏫
-The ABC School
+Simmosn College of Kentucky
 
 ### Team Name 🏷
-Coding Costars
+Falcon Flyers
 
 ### ✨ Contributors ✨
 **...tell the world who you and your team are 🙂**
-* Team member X 
-* Team member Y 
-* Team member Z 
+* Oluwatamilore Adebiyi 
+* Camaria Young
+* Kay'ne Campbell 
