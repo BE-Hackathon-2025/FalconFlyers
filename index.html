@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Growth Hub</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /*
+      Theme variables are defined on :root for light mode and overridden
+      when [data-theme="dark"] is present on <html> or <body>.
+      This makes it easy to tweak or add more themes later.
+    */
+
+    :root {
+      /* Core colors */
+      --bg: #F5F7FA;                 /* page background */
+      --surface: #ffffff;            /* cards, nav surface */
+      --text: #0F1724;               /* primary text */
+      --muted: #475569;              /* secondary text */
+      --primary: #3F51B5;            /* strong primary (nav accent) */
+      --accent: #FF9800;             /* hover / accent */
+      --nav-bg: #3F51B5;             /* nav background */
+      --focus: #FFD54F;              /* focus ring (high contrast) */
+
+      /* Elevation / shadow */
+      --shadow-1: 0 1px 3px rgba(2,6,23,0.06);
+      --shadow-2: 0 8px 24px rgba(15,23,36,0.06);
+
+      /* Sizes */
+      --nav-height: 64px;
+      --radius: 10px;
+
+      /* Motion */
+      --motion-speed: 200ms;
+    }
+
+    /* Dark theme overrides */
+    :root[data-theme="dark"], [data-theme="dark"] {
+      --bg: #071024;                 /* deeper background */
+      --surface: #0b1220;            /* surface for nav etc */
+      --text: #E6EEF8;               /* primary text in dark */
+      --muted: #9FB4D6;              /* secondary text */
+      --primary: #6C8CF2;            /* primary color (slightly lighter) */
+      --accent: #FFB86B;             /* accent for dark */
+      --nav-bg: #0F1724;
+      --focus: #FFD780;
+      --shadow-1: 0 2px 12px rgba(3,6,15,0.6);
+      --shadow-2: 0 10px 30px rgba(3,6,15,0.7);
+    }
+
+    /* Respect user reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      :root { --motion-speed: 0ms; }
+    }
+
+    /* Base layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg, var(--bg), color-mix(in srgb, var(--bg) 90%, var(--surface) 10%));
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.4;
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 1000;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 0.75rem;
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 6px;
+      box-shadow: var(--shadow-1);
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      height: var(--nav-height);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--nav-bg) 92%, var(--surface) 8%), var(--nav-bg));
+      box-shadow: var(--shadow-2);
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .brand svg { width: 36px; height: 36px; flex: 0 0 36px; }
+
+    .nav-list {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 14px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background var(--motion-speed) ease, transform var(--motion-speed) ease, color var(--motion-speed) ease;
+      outline: none;
+    }
+
+    .nav-item svg { width: 18px; height: 18px; opacity: 0.95; flex-shrink: 0; }
+
+    .nav-item:hover,
+    .nav-item:focus {
+      transform: translateY(-2px);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--nav-bg) 85%, var(--accent) 15%), color-mix(in srgb, var(--nav-bg) 75%, var(--accent) 25%));
+      color: #fff;
+      box-shadow: var(--shadow-1);
+    }
+
+    .nav-item[aria-current="page"] {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      color: #06202c;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-1px);
+    }
+
+    /* Focus-visible ring for keyboard navigation
