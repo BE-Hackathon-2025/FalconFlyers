@@ -3,7 +3,7 @@ _______________
 
 
 # Project Name
-Real World Connect
+Real Connect
 
 
 ## Challenge Statement(s) Addressed 🎯
@@ -23,7 +23,8 @@ Developing a cutting-edge software application that harnesses the power of artii
 
 
 ## Project Description 🤯
-**....at least 3 sentences describing what the project does and how it works**
+A website that uses AI to direct people to connec
+
 
 ## Project Value 💰
 **....at least 3 sentences describing your target customer and tangible benefits from your solution**
