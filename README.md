@@ -3,6 +3,8 @@ _______________
 
 
 # Project Name
+Genzerations/ Real World Connections (Working Title)
+
 
 ## Challenge Statement(s) Addressed 🎯
 ### Real World Solutions for Today's Communities
@@ -46,7 +48,7 @@ Developing a cutting-edge software application that harnesses the power of artii
 - [ ] Code merged to main branch
 
 ### School Name 🏫
-Simmosn College of Kentucky
+Simmons College of Kentucky
 
 ### Team Name 🏷
 Falcon Flyers
