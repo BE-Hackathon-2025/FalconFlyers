@@ -39,31 +39,65 @@ function findResourceReply(text) {
   return "I'm here to help! Please let me know if you need support with wellness, essentials, jobs, education, or community resources.";
 }
 
-function appendMessage(content, user = false) {
+function appendMessage(content, who) {
   const msg = document.createElement('div');
-  msg.className = 'chatbot-message' + (user ? ' user' : '');
-  msg.innerHTML = content;
-  document.getElementById('chatbot-messages').appendChild(msg);
-  document.getElementById('chatbot-messages').scrollTop = 99999;
+  const msgs = document.getElementById("chatbot-messages")
+  msg.className = `chatbot-message ${who}`;
+  msg.textContent = content;
+  msgs.appendChild(msg);
+  msgs.scrollTop = msgs.scrollHeight;
 }
 
 // Basic interaction/submit handler
 window.handleChat = function (e) {
   e.preventDefault();
   const input = document.getElementById('chatbot-input');
-  const text = input.value.trim();
-  if (!text) return;
-
+  const subBtn = document.getElementById("chatbot-submit");
   const page = window.location.pathname.split("/").pop();
   if (page === "index.html" || page === "") {
     sessionStorage.setItem("message", text);
     window.location.href = 'bot.html';
-  } else {
-    appendMessage(text, true);
-    input.value = '';
-    setTimeout(() => {
-      appendMessage(findResourceReply(text));
-    }, 600);
+    return
+  }
+
+  const text = input.value.trim();
+  if (!text) return;
+
+  appendMessage(text, "user")
+  input.value = '';
+  subBtn.disabled = true;
+
+  const fallback = findResourceReply(text);
+
+  const history = [{ role: "system", content: "You are a helpful, concise assistant connecting people to verified, factual resources for their problems and issues." }];
+  history.push({ role: "user", content: text });
+  
+
+
+  
+  
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify({messages: history})
+    });
+    if (!res.ok) throw new Error("Network Error");
+    const data = await res.json();
+    console.log("API Response:", data);
+    const reply = data.reply || fallback || "(no response)";
+    history.push({role: "assistant", content: reply})
+    appendMessage(reply, "bot")
+  }
+  catch (err){
+    console.error(err);
+
+    appendMessage(err.message + "\nFallback: " + fallback, "bot");  
+  }
+  finally{
+    subBtn.disabled = false;
   }
 };
 
