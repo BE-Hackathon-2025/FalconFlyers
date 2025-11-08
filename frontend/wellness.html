@@ -1,108 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Real Connect – Wellness</title>
-  <meta name="description" content="Therapy, Fitness, Mindfulness, and Emotional Balance resources curated for young adults." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <nav class="navbar" role="navigation" aria-label="Primary">
-    <div class="navbar-inner">
-      <div class="brand-wrap">
-        <a href="index.html" class="navbar-logo">The Real<br/><span class="logo-strong">Connect</span></a>
-      </div>
-
-      <ul class="navbar-links" id="primary-navigation" role="menu" aria-label="Primary">
-        <li><a role="menuitem" href="index.html">Home</a></li>
-        <li><a role="menuitem" aria-current="page" href="wellness.html">Wellness</a></li>
-        <li><a role="menuitem" href="essentials.html">Essentials</a></li>
-        <li><a role="menuitem" href="work.html">Work & Growth</a></li>
-        <li><a role="menuitem" href="legal.html">Legal & Rights</a></li>
-        <li><a role="menuitem" href="learn.html">Learn & Level Up</a></li>
-        <li><a role="menuitem" href="community.html">Community Wall</a></li>
-      </ul>
-    </div>
+  <nav class="navbar">
+    <div class="navbar-logo">The Real Connect</div>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="work.html">Work & Growth</a></li>
+      <li><a href="legal.html">Legal & Rights</a></li>
+      <li><a href="learn.html">Learn & Level Up</a></li>
+      <li><a href="community.html">Community Wall</a></li>
+    </ul>
   </nav>
-
-  <main id="main" tabindex="-1">
-    <header class="page-hero" role="banner">
-      <h1>Unlock real wellness — support that meets you where you are.</h1>
-      <p class="hero-sub">Practical resources for Therapy, Fitness, Mindfulness, and Emotional Balance — small steps, big changes.</p>
-      <a class="back-home-btn" href="index.html" aria-label="Back to Home">← Back to Home</a>
-    </header>
-
-    <section class="resources" aria-labelledby="resources-heading">
-      <h2 id="resources-heading" class="sr-only">Featured Wellness Resources</h2>
-
-      <ul class="resource-row" role="list" aria-label="Wellness resource cards">
-        <li class="card" role="listitem" tabindex="0" data-key="therapy" aria-haspopup="dialog">
-          <div class="card-top">
-            <div class="icon" aria-hidden="true">🗣️</div>
-            <h3>Therapy & Counseling</h3>
-          </div>
-          <p>Find affordable therapists, sliding-scale options, and remote counselors who get you.</p>
-          <button class="card-open" aria-label="Open Therapy details">Learn more</button>
-        </li>
-
-        <li class="card" role="listitem" tabindex="0" data-key="fitness" aria-haspopup="dialog">
-          <div class="card-top">
-            <div class="icon" aria-hidden="true">🏃‍♀️</div>
-            <h3>Fitness & Movement</h3>
-          </div>
-          <p>Accessible workouts, beginner-friendly plans, and movement to boost mood and energy.</p>
-          <button class="card-open" aria-label="Open Fitness details">Learn more</button>
-        </li>
-
-        <li class="card" role="listitem" tabindex="0" data-key="mindfulness" aria-haspopup="dialog">
-          <div class="card-top">
-            <div class="icon" aria-hidden="true">🧘‍♂️</div>
-            <h3>Mindfulness & Meditation</h3>
-          </div>
-          <p>Short guided practices and micro-routines to build calm and focus throughout your day.</p>
-          <button class="card-open" aria-label="Open Mindfulness details">Learn more</button>
-        </li>
-
-        <li class="card" role="listitem" tabindex="0" data-key="emotional" aria-haspopup="dialog">
-          <div class="card-top">
-            <div class="icon" aria-hidden="true">💬</div>
-            <h3>Emotional Balance</h3>
-          </div>
-          <p>Tools for mood tracking, coping strategies, and peer support options to stay steady.</p>
-          <button class="card-open" aria-label="Open Emotional Balance details">Learn more</button>
-        </li>
-      </ul>
-    </section>
+  <section class="page-hero">
+    <h1>Wellness Resources</h1>
+    <p>Explore mental health, counseling, fitness, self-care, and support resources curated for you.</p>
+    <a href="index.html" class="back-home-btn">← Back to Home</a>
+  </section>
+  <main class="page-main">
+    <div class="resource-card">
+      <h3>Mental Health Support</h3>
+      <p>Find therapists, counseling hotlines, crisis support, and peer circles.</p>
+    </div>
+    <div class="resource-card">
+      <h3>Fitness Activities</h3>
+      <p>Search for local gyms, free virtual fitness classes, and walk groups.</p>
+    </div>
+    <div class="resource-card">
+      <h3>Wellness Events</h3>
+      <p>Join mindfulness workshops, meditation sessions, and wellness activities near you.</p>
+    </div>
   </main>
-
-  <!-- Slide-out panel -->
-  <div class="panel-overlay" id="panel-overlay" hidden></div>
-  <aside class="slide-panel" id="slide-panel" aria-hidden="true" aria-labelledby="panel-title" role="dialog">
-    <button class="panel-close" id="panel-close" aria-label="Close panel">×</button>
-    <div class="panel-inner">
-      <h3 id="panel-title"></h3>
-      <p id="panel-desc"></p>
-
-      <div id="panel-links" class="panel-links" aria-live="polite"></div>
-
-      <div class="panel-extra" id="panel-extra"></div>
-    </div>
-  </aside>
-
-  <footer class="site-footer" role="contentinfo">
-    <div>
-      <p>© 2025 The Real Connect. Wellness & Community for all.</p>
-    </div>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="contact.html">Contact</a>
-    </div>
+  <footer class="footer">
+    <span>&copy; 2025 The Real Connect. Wellness & Community for all.</span>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
