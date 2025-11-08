@@ -49,19 +49,20 @@ function appendMessage(content, who) {
 }
 
 // Basic interaction/submit handler
-window.handleChat = function (e) {
+window.handleChat = async function (e) {
   e.preventDefault();
   const input = document.getElementById('chatbot-input');
   const subBtn = document.getElementById("chatbot-submit");
   const page = window.location.pathname.split("/").pop();
+
+
+  const text = input.value.trim();
+  if (!text) return;
   if (page === "index.html" || page === "") {
     sessionStorage.setItem("message", text);
     window.location.href = 'bot.html';
     return
   }
-
-  const text = input.value.trim();
-  if (!text) return;
 
   appendMessage(text, "user")
   input.value = '';
@@ -71,10 +72,6 @@ window.handleChat = function (e) {
 
   const history = [{ role: "system", content: "You are a helpful, concise assistant connecting people to verified, factual resources for their problems and issues." }];
   history.push({ role: "user", content: text });
-  
-
-
-  
   
   try {
     const res = await fetch("/api/chat", {
