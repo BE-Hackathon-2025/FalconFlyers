@@ -4,6 +4,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Real Connect – Find Wellness & Community Resources</title>
         <link rel="stylesheet" href="styles.css">
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+            const savedMessage = sessionStorage.getItem('message');
+            if (savedMessage) {
+                appendMessage(savedMessage, true);
+                setTimeout(() => {
+                appendMessage(findResourceReply(savedMessage));
+                }, 600);
+                // Clear it so it doesn’t repeat on reload
+                sessionStorage.removeItem('message');
+            }
+            });
+        </script>
     </head>
     <body>
         <nav class="navbar">
@@ -28,5 +41,6 @@
         </div>
         
         <script src="chatbot.js"></script>
+        
     </body>
 </html>

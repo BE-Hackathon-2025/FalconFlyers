@@ -53,12 +53,17 @@ window.handleChat = function (e) {
   const input = document.getElementById('chatbot-input');
   const text = input.value.trim();
   if (!text) return;
-  appendMessage(text, true);
-  input.value = '';
-  setTimeout(() => {
-    appendMessage(findResourceReply(text));
-  }, 600);
+
+  const page = window.location.pathname.split("/").pop();
+  if (page === "index.html" || page === "") {
+    sessionStorage.setItem("message", text);
+    window.location.href = 'bot.html';
+  } else {
+    appendMessage(text, true);
+    input.value = '';
+    setTimeout(() => {
+      appendMessage(findResourceReply(text));
+    }, 600);
+  }
 };
 
-// Optional: Open chatbot on page load for demo (comment out to disable)
-// window.addEventListener('DOMContentLoaded', openChatbot);
