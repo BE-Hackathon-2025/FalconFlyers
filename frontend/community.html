@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Real Connect – Community Wall</title>
+  <!-- Site-wide styles first, page-specific overrides second -->
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="community.css" />
 </head>
-<body>
+<body class="page-community">
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="navbar-logo">The Real Connect</div>
@@ -22,45 +24,93 @@
   </nav>
 
   <!-- HERO -->
-  <section class="page-hero">
-    <h1>Community Wall</h1>
-    <p>Join our real-world support group! Find local events, post messages, and connect with helpful allies.</p>
-    <a href="index.html" class="back-home-btn">← Back to Home</a>
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Community Wall</h1>
+      <p>Ask for help, offer help, share wins, and post local meetups. Your voice = community power.</p>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+    <div class="hero-bubble" aria-hidden="true"></div>
+  </header>
+
+  <!-- CONTROLS -->
+  <section class="controls container">
+    <div class="filters" role="tablist" aria-label="Filter posts">
+      <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="chip" data-filter="events" role="tab" aria-selected="false">Events</button>
+      <button class="chip" data-filter="message" role="tab" aria-selected="false">Messages</button>
+      <button class="chip" data-filter="mutual" role="tab" aria-selected="false">Mutual Aid</button>
+    </div>
+    <div class="controls-right">
+      <button id="openSettings" class="ghost-btn" type="button">Private Name</button>
+    </div>
   </section>
 
-  <!-- MAIN CONTENT -->
-  <main class="page-main">
-    <div class="community-row">
-      <div class="community-card" data-id="events">
-        <h3>Events & Meetups</h3>
-        <p>See upcoming meetups and events organized by community partners.</p>
-      </div>
-      <div class="community-card" data-id="message">
-        <h3>Message Board</h3>
-        <p>Ask questions, share news, or post needs & offers with others in your city.</p>
-      </div>
-      <div class="community-card" data-id="mutual">
-        <h3>Volunteer & Mutual Aid</h3>
-        <p>Find volunteer opportunities and ways to help or get help in your local network.</p>
-      </div>
-    </div>
+  <!-- LAYOUT -->
+  <main class="container layout" aria-labelledby="startPostHeading">
+    <!-- Composer -->
+    <aside class="composer" aria-label="Create a post">
+      <h2 id="startPostHeading">Start a post</h2>
+      <form id="composerForm" autocomplete="off">
+        <label class="stack">
+          <span class="label">Category</span>
+          <select id="postCategory" required>
+            <option value="message">Message</option>
+            <option value="events">Event / Meetup</option>
+            <option value="mutual">Volunteer / Mutual Aid</option>
+          </select>
+        </label>
 
-    <!-- Slide-Out Panel -->
-    <div class="community-backdrop" id="backdrop"></div>
-    <aside class="community-panel" id="panel" aria-hidden="true">
-      <div class="panel-header">
-        <h2 id="panelTitle">Details</h2>
-        <button class="close-btn" id="closePanel">&times;</button>
-      </div>
-      <div class="panel-body" id="panelBody"></div>
+        <label class="stack">
+          <span class="label">Your message</span>
+          <textarea id="postText" rows="4" maxlength="800" placeholder="Keep it kind, useful, and specific…" required></textarea>
+          <div class="hint"><span id="charCount">0</span>/800</div>
+        </label>
+
+        <label class="stack">
+          <span class="label">Optional link</span>
+          <input id="postLink" type="url" inputmode="url" placeholder="https://example.com">
+        </label>
+
+        <label class="row">
+          <input id="usePrivateName" type="checkbox">
+          <span>Use my private name publicly on this post</span>
+        </label>
+
+        <button class="primary" type="submit">Post to Wall</button>
+        <p class="small muted">Your private name is stored only on your device unless you choose to display it.</p>
+      </form>
     </aside>
+
+    <!-- Feed -->
+    <section class="feed" id="feed" aria-live="polite">
+      <!-- posts render here -->
+    </section>
   </main>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-backdrop" id="settingsBackdrop" hidden></div>
+  <dialog class="modal" id="settingsModal" aria-labelledby="settingsTitle">
+    <form method="dialog" class="modal-body" id="settingsForm">
+      <h3 id="settingsTitle">Private Name</h3>
+      <p class="muted">This name is saved locally in your browser. It won’t be uploaded or shared unless you choose to display it on a post.</p>
+      <label class="stack">
+        <span class="label">Your private name</span>
+        <input id="privateNameInput" type="text" maxlength="40" placeholder="ex. Cam • student • west end">
+      </label>
+      <menu class="modal-actions">
+        <button value="cancel" class="ghost-btn" id="closeSettings">Close</button>
+        <button id="savePrivateName" value="default" class="primary">Save</button>
+      </menu>
+    </form>
+  </dialog>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span>&copy; 2025 The Real Connect. Wellness & Community for all.</span>
+    <span>© 2025 The Real Connect. Wellness & Community for all.</span>
   </footer>
 
-  <script src="community.js"></script>
+  <!-- Page script -->
+  <script src="community.js" defer></script>
 </body>
 </html>
