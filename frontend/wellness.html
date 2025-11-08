@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Real Connect – Wellness</title>
+  <!-- Global styles (navbar, gradient, cards, footer) -->
   <link rel="stylesheet" href="styles.css" />
   <style>
+    /* Page-specific (keeps the look consistent with Essentials/Work/Legal) */
     :root {
       --mint: #50C5B7;
       --royal: #0463B9;
@@ -21,36 +23,7 @@
       color: var(--ink);
     }
 
-    /* NAVBAR */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 24px;
-      background: var(--paper);
-      border-bottom: 3px solid var(--royal);
-    }
-    .navbar-logo {
-      font-weight: 900;
-      color: var(--royal);
-    }
-    .navbar-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar-links a {
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .navbar-links a.active {
-      color: var(--royal);
-    }
-
-    /* HERO SECTION */
+    /* HERO */
     .page-hero {
       text-align: center;
       padding: 60px 20px 30px;
@@ -63,8 +36,8 @@
     }
     .page-hero p {
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 10px;
+      max-width: 780px;
+      margin: 0 auto 8px;
     }
     .back-home-btn {
       display: inline-block;
@@ -74,20 +47,19 @@
       text-decoration: none;
     }
 
-    /* RESOURCE CARDS */
+    /* CARDS ROW */
     .page-main {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 24px;
-      padding: 30px 20px 80px;
+      padding: 30px 20px 100px;
     }
-
     .resource-card {
       background: var(--paper);
       border-radius: 16px;
-      width: 280px;
-      padding: 20px;
+      width: 320px;
+      padding: 22px;
       text-align: left;
       box-shadow: 0 6px 16px rgba(4, 99, 185, 0.15);
       cursor: pointer;
@@ -99,7 +71,7 @@
     }
     .resource-card h3 {
       color: var(--royal);
-      margin-top: 0;
+      margin: 0 0 6px 0;
     }
 
     /* SLIDE-OUT PANEL */
@@ -107,8 +79,8 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 380px;
-      max-width: 90%;
+      width: 430px;
+      max-width: 92%;
       height: 100%;
       background: linear-gradient(135deg, var(--mint), var(--sun));
       box-shadow: -8px 0 20px rgba(0,0,0,0.25);
@@ -119,55 +91,41 @@
       color: var(--ink);
       border-left: 3px solid var(--royal);
     }
-
-    .slide-panel.open {
-      right: 0;
-    }
-
+    .slide-panel.open { right: 0; }
     .panel-close {
       align-self: flex-end;
-      margin: 20px;
+      margin: 16px;
       background: none;
       border: none;
       font-size: 28px;
-      font-weight: bold;
+      font-weight: 800;
       cursor: pointer;
       color: var(--royal);
     }
-
     .panel-content {
-      padding: 0 25px 40px;
+      padding: 0 20px 40px;
       overflow-y: auto;
     }
-
     .panel-content h2 {
       color: var(--royal);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
+      margin: 0 0 6px 0;
     }
-
-    .panel-text ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-    .panel-text a {
+    .panel-section {
+      margin: 16px 0 10px;
+      font-weight: 700;
       color: var(--royal);
-      text-decoration: underline;
     }
+    .panel-text ul { padding-left: 18px; margin: 8px 0 14px; }
+    .panel-text li { margin: 4px 0; line-height: 1.3; }
+    .panel-text a { color: var(--royal); text-decoration: underline; word-break: break-word; }
 
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 30px;
-      background: var(--sun);
-      font-weight: 600;
-    }
+    /* Footer (yellow banner) is already styled globally in styles.css;
+       keep it present in DOM so it shows the bar. */
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .page-main {
-        flex-direction: column;
-        align-items: center;
-      }
+    /* Responsive */
+    @media (max-width: 860px) {
+      .resource-card { width: 100%; max-width: 560px; }
     }
   </style>
 </head>
@@ -187,23 +145,25 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="page-hero">
     <h1>Wellness Resources</h1>
     <p>Explore mental health, counseling, fitness, self-care, and support resources curated for you.</p>
     <a href="index.html" class="back-home-btn">← Back to Home</a>
   </section>
 
-  <!-- RESOURCE CARDS -->
+  <!-- CARDS (horizontal like other pages) -->
   <main class="page-main">
     <div class="resource-card" data-panel="mental">
       <h3>Mental Health Support</h3>
       <p>Find therapists, counseling hotlines, crisis support, and peer circles.</p>
     </div>
+
     <div class="resource-card" data-panel="fitness">
       <h3>Fitness Activities</h3>
       <p>Search for local gyms, free virtual fitness classes, and walk groups.</p>
     </div>
+
     <div class="resource-card" data-panel="events">
       <h3>Wellness Events</h3>
       <p>Join mindfulness workshops, meditation sessions, and wellness activities near you.</p>
@@ -216,81 +176,164 @@
     <div class="panel-content" id="panelContent"></div>
   </aside>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (yellow banner) -->
   <footer class="footer">
-    <span>&copy; 2025 The Real Connect. Wellness & Community for all.</span>
+    <span>© 2025 The Real Connect. Wellness & Community for all.</span>
   </footer>
 
-  <!-- PAGE SCRIPT -->
+  <!-- PAGE SCRIPT: 20+ resources per section -->
   <script>
     const panelData = {
       mental: {
         title: "Mental Health Support",
         html: `
-          <p>Connect with licensed therapists, free hotlines, crisis resources, and peer support circles.</p>
-          <ul>
-            <li><a href="https://988lifeline.org" target="_blank" rel="noopener">988 Suicide & Crisis Lifeline</a> – call/text 988</li>
-            <li><a href="https://www.opencounseling.com/hotlines/us" target="_blank" rel="noopener">Nationwide hotlines directory</a></li>
-            <li><a href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">Find a therapist (Psychology Today)</a></li>
-            <li><a href="https://www.nami.org/Support-Education/NAMI-HelpLine" target="_blank" rel="noopener">NAMI HelpLine</a></li>
-          </ul>
+          <div class="panel-text">
+            <p>Connect with licensed therapists, free hotlines, crisis resources, and peer support circles.</p>
+
+            <div class="panel-section">Hotlines & Immediate Help</div>
+            <ul>
+              <li><a href="https://988lifeline.org" target="_blank" rel="noopener">988 Suicide & Crisis Lifeline</a> — call/text 988</li>
+              <li><a href="https://www.crisistextline.org" target="_blank" rel="noopener">Crisis Text Line</a> — text HOME to 741741</li>
+              <li><a href="https://www.veteranscrisisline.net" target="_blank" rel="noopener">Veterans Crisis Line</a> — dial 988 then press 1</li>
+              <li><a href="https://www.thetrevorproject.org/get-help" target="_blank" rel="noopener">Trevor Project (LGBTQ+ youth)</a></li>
+              <li><a href="https://translifeline.org/hotline" target="_blank" rel="noopener">Trans Lifeline</a></li>
+              <li><a href="https://www.rainn.org/" target="_blank" rel="noopener">RAINN (sexual assault hotline)</a></li>
+              <li><a href="https://www.loveisrespect.org/" target="_blank" rel="noopener">love is respect (dating abuse)</a></li>
+              <li><a href="https://www.thehotline.org/" target="_blank" rel="noopener">National Domestic Violence Hotline</a></li>
+              <li><a href="https://www.opencounseling.com/hotlines/us" target="_blank" rel="noopener">Nationwide Hotlines Directory – OpenCounseling</a></li>
+            </ul>
+
+            <div class="panel-section">Find a Therapist / Counselor</div>
+            <ul>
+              <li><a href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">Psychology Today Therapist Finder</a></li>
+              <li><a href="https://findtreatment.gov" target="_blank" rel="noopener">SAMHSA Treatment Locator</a></li>
+              <li><a href="https://www.inclusivetherapists.com/" target="_blank" rel="noopener">Inclusive Therapists</a></li>
+              <li><a href="https://therapyforblackgirls.com/directory" target="_blank" rel="noopener">Therapy for Black Girls (Directory)</a></li>
+              <li><a href="https://beam.community/" target="_blank" rel="noopener">BEAM — Black Emotional & Mental Health Collective</a></li>
+              <li><a href="https://latinxtherapy.com/therapists" target="_blank" rel="noopener">Latinx Therapy (Directory)</a></li>
+              <li><a href="https://openpathcollective.org/" target="_blank" rel="noopener">Open Path Collective (low-cost therapy)</a></li>
+              <li><a href="https://www.nami.org/help" target="_blank" rel="noopener">NAMI HelpLine & Programs</a></li>
+              <li><a href="https://www.postpartum.net/get-help" target="_blank" rel="noopener">Postpartum Support International</a></li>
+            </ul>
+
+            <div class="panel-section">Peer Support & Self-Help</div>
+            <ul>
+              <li><a href="https://www.7cups.com/" target="_blank" rel="noopener">7 Cups (peer support)</a></li>
+              <li><a href="https://mentalhealth.gov/" target="_blank" rel="noopener">MentalHealth.gov Resources</a></li>
+              <li><a href="https://www.aa.org/find-aa" target="_blank" rel="noopener">Alcoholics Anonymous (Find a Meeting)</a></li>
+              <li><a href="https://na.org/meetingsearch/" target="_blank" rel="noopener">Narcotics Anonymous (Meeting Search)</a></li>
+              <li><a href="https://griefshare.org/findagroup" target="_blank" rel="noopener">GriefShare Groups</a></li>
+              <li><a href="https://www.smartrecovery.org/local/" target="_blank" rel="noopener">SMART Recovery (Local & Online)</a></li>
+            </ul>
+          </div>
         `
       },
+
       fitness: {
         title: "Fitness Activities",
         html: `
-          <p>Move your body and boost your mood with local and virtual options.</p>
-          <ul>
-            <li>Try free classes on YouTube (yoga, HIIT, mobility).</li>
-            <li><a href="https://www.ymca.org/find-your-y" target="_blank" rel="noopener">Local YMCA</a> – community gyms & programs</li>
-            <li><a href="https://www.meetup.com/find/?keywords=walking%20group" target="_blank" rel="noopener">Walking groups on Meetup</a></li>
-            <li>Follow a simple weekly routine: M/W/F (strength) + T/Th (cardio).</li>
-          </ul>
+          <div class="panel-text">
+            <p>Move your body with free/low-cost options, classes, and community groups.</p>
+
+            <div class="panel-section">Free & Low-Cost Classes</div>
+            <ul>
+              <li><a href="https://www.youtube.com/@yogawithadriene" target="_blank" rel="noopener">Yoga With Adriene (YouTube)</a></li>
+              <li><a href="https://www.fitnessblender.com/videos" target="_blank" rel="noopener">Fitness Blender (Free Workouts)</a></li>
+              <li><a href="https://www.nike.com/ntc-app" target="_blank" rel="noopener">Nike Training Club (App)</a></li>
+              <li><a href="https://www.ymca.org/find-your-y" target="_blank" rel="noopener">Find Your YMCA</a></li>
+              <li><a href="https://www.planetfitness.com/" target="_blank" rel="noopener">Planet Fitness (Low-cost Gyms)</a></li>
+              <li><a href="https://www.classpass.com/" target="_blank" rel="noopener">ClassPass (Studios & Gyms)</a></li>
+              <li><a href="https://www.silversneakers.com/" target="_blank" rel="noopener">SilverSneakers (Seniors)</a></li>
+            </ul>
+
+            <div class="panel-section">Community & Outdoor</div>
+            <ul>
+              <li><a href="https://www.meetup.com/find/?keywords=walking%20group" target="_blank" rel="noopener">Meetup — Walking Groups</a></li>
+              <li><a href="https://www.parkrun.us/events/" target="_blank" rel="noopener">parkrun (Free Weekly 5Ks)</a></li>
+              <li><a href="https://november-project.com/locations/" target="_blank" rel="noopener">November Project (Free Bootcamps)</a></li>
+              <li><a href="https://www.girltrek.org/" target="_blank" rel="noopener">GirlTrek (Black Women Walking)</a></li>
+              <li><a href="https://findyourpark.com/" target="_blank" rel="noopener">Find Your Park (NPS)</a></li>
+              <li><a href="https://www.nrpa.org/our-work/Three-Pillars/health-wellness/find-your-local-park-and-rec/" target="_blank" rel="noopener">Find Local Parks & Rec</a></li>
+              <li><a href="https://parkrx.org/" target="_blank" rel="noopener">ParkRx (Nature Prescriptions)</a></li>
+            </ul>
+
+            <div class="panel-section">Tracking & Training</div>
+            <ul>
+              <li><a href="https://www.strava.com/clubs/search" target="_blank" rel="noopener">Strava Clubs</a></li>
+              <li><a href="https://www.mapmyrun.com/routes/" target="_blank" rel="noopener">MapMyRun (Routes)</a></li>
+              <li><a href="https://www.acefitness.org/education-and-resources/lifestyle/tools-calculators/" target="_blank" rel="noopener">ACE Fitness Calculators</a></li>
+              <li><a href="https://health.gov/moveyourway" target="_blank" rel="noopener">HHS Move Your Way</a></li>
+              <li><a href="https://www.specialolympics.org/our-work/healthy-athletes" target="_blank" rel="noopener">Special Olympics: Healthy Athletes</a></li>
+              <li><a href="https://www.rei.com/events" target="_blank" rel="noopener">REI Classes & Events</a></li>
+            </ul>
+          </div>
         `
       },
+
       events: {
         title: "Wellness Events",
         html: `
-          <p>Mindfulness, meditation, and wellness experiences to recharge.</p>
-          <ul>
-            <li><a href="https://www.eventbrite.com/d/online/meditation/" target="_blank" rel="noopener">Eventbrite</a> – meditation & wellness workshops</li>
-            <li><a href="https://www.meetup.com/topics/wellness/" target="_blank" rel="noopener">Meetup</a> – local wellness meetups</li>
-            <li>Check your library or community centers for free sessions weekly.</li>
-          </ul>
+          <div class="panel-text">
+            <p>Discover workshops, meditations, and wellness happenings online and nearby.</p>
+
+            <div class="panel-section">Find Events</div>
+            <ul>
+              <li><a href="https://www.eventbrite.com/d/online/wellness/" target="_blank" rel="noopener">Eventbrite — Wellness</a></li>
+              <li><a href="https://www.meetup.com/topics/wellness/" target="_blank" rel="noopener">Meetup — Wellness Groups</a></li>
+              <li><a href="https://www.mindful.org/events/" target="_blank" rel="noopener">Mindful.org — Events</a></li>
+              <li><a href="https://www.psychologytoday.com/us/groups" target="_blank" rel="noopener">Psychology Today — Support Groups</a></li>
+              <li><a href="https://www.churchfinder.com/churches" target="_blank" rel="noopener">Local Faith & Community Calendars</a></li>
+              <li><a href="https://www.usa.gov/libraries" target="_blank" rel="noopener">Find Your Library (Events)</a></li>
+              <li><a href="https://www.hrsa.gov/find-a-health-center" target="_blank" rel="noopener">Community Health Centers (classes/fairs)</a></li>
+            </ul>
+
+            <div class="panel-section">Mindfulness & Meditation</div>
+            <ul>
+              <li><a href="https://www.insighttimer.com/live" target="_blank" rel="noopener">Insight Timer — Live</a></li>
+              <li><a href="https://palousemindfulness.com/" target="_blank" rel="noopener">Palouse Mindfulness (free MBSR)</a></li>
+              <li><a href="https://www.tarabrach.com/meditation-resources/" target="_blank" rel="noopener">Tara Brach — Meditations</a></li>
+              <li><a href="https://jackkornfield.com/meditations/" target="_blank" rel="noopener">Jack Kornfield — Meditations</a></li>
+              <li><a href="https://soundsTrue.com/collections/online-courses" target="_blank" rel="noopener">Sounds True — Courses</a></li>
+              <li><a href="https://www.uclahealth.org/programs/marc/free-programs-guided-meditations" target="_blank" rel="noopener">UCLA Mindful — Free Meditations</a></li>
+            </ul>
+
+            <div class="panel-section">Movement, Yoga & Community</div>
+            <ul>
+              <li><a href="https://www.yogaalliance.org/Events" target="_blank" rel="noopener">Yoga Alliance — Events</a></li>
+              <li><a href="https://www.wellnessliving.com/rs/catalog-list.html" target="_blank" rel="noopener">WellnessLiving — Class Catalog</a></li>
+              <li><a href="https://www.active.com/" target="_blank" rel="noopener">ACTIVE.com — Races & Classes</a></li>
+              <li><a href="https://www.recservicelocator.org/" target="_blank" rel="noopener">Community Recreation Locators</a></li>
+              <li><a href="https://www.ncoa.org/older-adults/benefits/health/wellness-programs/" target="_blank" rel="noopener">NCOA Wellness Programs (Older Adults)</a></li>
+              <li><a href="https://www.naaf.org/events" target="_blank" rel="noopener">Health & Awareness Organization Calendars</a></li>
+            </ul>
+          </div>
         `
       }
     };
 
-    const cards = document.querySelectorAll(".resource-card[data-panel]");
-    const panel = document.getElementById("slidePanel");
-    const panelClose = document.getElementById("panelClose");
-    const panelContent = document.getElementById("panelContent");
+    const cards = document.querySelectorAll('.resource-card[data-panel]');
+    const panel = document.getElementById('slidePanel');
+    const panelClose = document.getElementById('panelClose');
+    const panelContent = document.getElementById('panelContent');
 
     function openPanel(key) {
       const data = panelData[key];
       if (!data) return;
-      panelContent.innerHTML = `<h2>${data.title}</h2><div class="panel-text">${data.html}</div>`;
-      panel.classList.add("open");
-      panel.setAttribute("aria-hidden", "false");
-      document.body.classList.add("panel-active");
+      panelContent.innerHTML = `<h2>${data.title}</h2>${data.html}`;
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('panel-active');
     }
-
     function closePanel() {
-      panel.classList.remove("open");
-      panel.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("panel-active");
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('panel-active');
     }
 
-    cards.forEach((card) => {
-      card.addEventListener("click", () => openPanel(card.getAttribute("data-panel")));
-    });
-    panelClose.addEventListener("click", closePanel);
-    panel.addEventListener("click", (e) => {
-      if (e.target === panel) closePanel();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closePanel();
-    });
+    cards.forEach(card => card.addEventListener('click', () => openPanel(card.getAttribute('data-panel'))));
+    panelClose.addEventListener('click', closePanel);
+    panel.addEventListener('click', (e) => { if (e.target === panel) closePanel(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
   </script>
 </body>
 </html>
